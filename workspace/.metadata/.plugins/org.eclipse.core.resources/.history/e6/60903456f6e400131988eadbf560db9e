@@ -1,0 +1,42 @@
+package com.dhliwayok.hopeworldwide;
+
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.KeyEvent;
+
+public class SearchECD extends Activity {
+
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+	}
+
+	
+	
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {//if back button pressed, exit
+
+		// TODO Auto-generated method stub
+		Intent broadcastIntent = new Intent();
+		broadcastIntent.setAction("CLEAR_STACK");
+		sendBroadcast(broadcastIntent);
+		return super.onKeyDown(keyCode, event);
+	}
+
+	class ActivitiesBroadcastReceiver extends BroadcastReceiver {
+		
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// TODO Auto-generated method stub
+			finish();
+		}
+	}
+}
